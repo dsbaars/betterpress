@@ -1,0 +1,19 @@
+language: php
+php:
+    - 5.5
+    - 5.6
+    - 7.0
+before_install:
+    - cp app/config/parameters.yml.dist app/config/parameters.yml
+install:
+    - npm install -g grunt-cli
+    - npm install -g bower
+    - npm install || true
+    - bower install
+    - composer install -n
+script:
+    - grunt verification
+    - vendor/squizlabs/php_codesniffer/scripts/phpcs --standard=PSR2 src
+branches:
+    only:
+        - master

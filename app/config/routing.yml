@@ -1,0 +1,27 @@
+dsbaars_betterpress:
+    resource: "@DsbaarsBetterpressBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+dsbaars_twenty_sixteen:
+    resource: "@DsbaarsTwentySixteenBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+home:
+    path: /
+    defaults:
+        _controller: DsbaarsTwentySixteenBundle:Default:index
+        path: /
+
+# Redirect everything else to index, so ui-router can take over
+root:
+    path: /{rest}
+    defaults:
+        _controller: DsbaarsTwentySixteenBundle:Default:index
+        path: /
+

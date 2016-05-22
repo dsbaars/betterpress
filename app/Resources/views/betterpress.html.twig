@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/">
+        <meta charset="UTF-8" />
+        <title>{% block title %}Betterpress{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- injector:css -->
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel='stylesheet' id='open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.5.2' type='text/css' media='all' />
+        <link rel='stylesheet' id='twentysixteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+        <link rel="stylesheet" href="{{ asset('bundles/dsbaarstwentysixteen/twentysixteen.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/dsbaarstwentysixteen/genericons.css') }}">
+        <!-- endinjector -->
+    </head>
+    <body class="home blog no-customize-support hfeed">
+        {% block body %}{% endblock %}
+
+        <!-- injector:js -->
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-resource/angular-resource.js"></script>
+        <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/ng/app.js"></script>
+        <script src="/ng/controllers/DemoCtrl.js"></script>
+        <script src="/ng/controllers/MainCtrl.js"></script>
+        <script src="/ng/controllers/NavbarCtrl.js"></script>
+        <script src="/ng/routers/main.js"></script>
+        <!-- endinjector -->
+        {% block javascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% endblock %}
+    </body>
+</html>

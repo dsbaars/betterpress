@@ -1,0 +1,74 @@
+<div id="page" class="site">
+    <div class="site-inner">
+        <a class="skip-link screen-reader-text" href="#content"{{ 'Skip to content'|trans({}, 'twentysixteen')  }}</a>
+
+        <header id="masthead" class="site-header" role="banner">
+            <div class="site-header-main">
+                <div class="site-branding">
+                    {{ site_logo }}
+
+                    {% if is_frontpage() and is_home() %}
+                    <h1 class="site-title"><a href="{{ path('home') }}" rel="home">{{ site_name }}</a></h1>
+                    {% else %}
+                    <p class="site-title"><a href="{{ path('home') }}" rel="home">{{ site_name }}</a></p>
+                    {% endif %}
+
+					{% if site_description is defined %}
+                    <p class="site-description">{{ site_description }}</p>
+                    {% endif %}
+                </div><!-- .site-branding -->
+
+                {% if has_nav_menu('primary') or has_nav_menu('social') %}
+                <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'twentysixteen' ); ?></button>
+
+                <div id="site-header-menu" class="site-header-menu">
+                    {% if has_nav_menu('primary') %}
+                    <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'twentysixteen' ); ?>">
+                        <?php
+									wp_nav_menu( array(
+										'theme_location' => 'primary',
+                        'menu_class'     => 'primary-menu',
+                        ) );
+                        ?>
+                    </nav><!-- .main-navigation -->
+                    {% endif %}
+
+                    {% if has_nav_menu('social') %}
+                    <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Social Links Menu', 'twentysixteen' ); ?>">
+                        <?php
+									wp_nav_menu( array(
+										'theme_location' => 'social',
+                        'menu_class'     => 'social-links-menu',
+                        'depth'          => 1,
+                        'link_before'    => '<span class="screen-reader-text">',
+										'link_after'     => '</span>',
+                        ) );
+                        ?>
+                    </nav><!-- .social-navigation -->
+                    {% endif %}
+                </div><!-- .site-header-menu -->
+                {% endif %}
+            </div><!-- .site-header-main -->
+
+            {% if header_image is defined %}
+            <?php
+					/**
+					 * Filter the default twentysixteen custom header sizes attribute.
+					 *
+					 * @since Twenty Sixteen 1.0
+					 *
+					 * @param string $custom_header_sizes sizes attribute
+					 * for Custom Header. Default '(max-width: 709px) 85vw,
+					 * (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px'.
+					 */
+					$custom_header_sizes = apply_filters( 'twentysixteen_custom_header_sizes', '(max-width: 709px) 85vw, (max-width: 909px) 81vw, (max-width: 1362px) 88vw, 1200px' );
+				?>
+            <div class="header-image">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                    <img src="<?php header_image(); ?>" srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( get_custom_header()->attachment_id ) ); ?>" sizes="<?php echo esc_attr( $custom_header_sizes ); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+                </a>
+            </div><!-- .header-image -->
+            {% endif %}
+        </header><!-- .site-header -->
+
+        <div id="content" class="site-content">

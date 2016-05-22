@@ -1,0 +1,40 @@
+</div><!-- .site-content -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+    <?php if ( has_nav_menu( 'primary' ) ) : ?>
+    {% if has_nav_menu('primary') %}
+        <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
+            {#
+                            wp_nav_menu( array(
+                                'theme_location' => 'primary',
+            'menu_class'     => 'primary-menu',
+            ) #}
+            ?>
+        </nav><!-- .main-navigation -->
+    {% endif %}
+
+    {% if has_nav_menu('social') %}
+        <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentysixteen' ); ?>">
+            {#
+                            wp_nav_menu( array(
+                                'theme_location' => 'social',
+            'menu_class'     => 'social-links-menu',
+            'depth'          => 1,
+            'link_before'    => '<span class="screen-reader-text">',
+                                'link_after'     => '</span>',
+            ) );
+            ?>#}
+        </nav><!-- .social-navigation -->
+    {% endif %}
+
+    <div class="site-info">
+        <span class="site-title"><a href="{{ path('home') }}" rel="home">{{ site_name }}</a></span>
+        <a href="">{{ 'Proudly powered by %s'|trans({'%s': 'twentysixteen'}, 'WordPress' )  }}</a>
+    </div><!-- .site-info -->
+</footer><!-- .site-footer -->
+</div><!-- .site-inner -->
+</div><!-- .site -->
+
+{# Here was wp_footer #}
+</body>
+</html>

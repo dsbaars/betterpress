@@ -1,0 +1,41 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: bundles/doctrine.yml }
+    - { resource: bundles/fos_rest.yml }
+    - { resource: bundles/jms_serializer.yml }
+    - { resource: bundles/nelmio_api_doc.yml }
+    - { resource: bundles/nelmio_cors.yml }
+    - { resource: bundles/sensio.yml }
+    - { resource: bundles/swiftmailer.yml }
+    - { resource: bundles/twig.yml }
+    - { resource: bundles/jwt_auth.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # I learned some stuff about cookie security, you might want this
+        # cookie_secure:   %cookie_secure%
+        # cookie_domain:   %cookie_domain%
+        # cookie_path:     %cookie_path%
+        # cookie_lifetime: %cookie_lifetime%
+        # name: NOMNOM
+        #
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  ~
+    fragments:       ~
+    http_method_override: true

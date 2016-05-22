@@ -1,0 +1,26 @@
+{% extends '::betterpress.html.twig' %}
+
+{% block body %}
+    {% include('@DsbaarsTwentySixteen/Default/_header.html.twig') %}
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
+
+            {{  have_posts() }}
+
+            {% if is_frontpage() and is_home() %}
+            <header>
+                <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+            </header>
+            {% endif %}
+
+            {% for post in posts %}
+                {% include('@DsbaarsTwentySixteen/Default/_post_content.html.twig') %}
+            {% else %}
+                <h3>No posts found</h3>
+            {% endfor %}
+
+        </main><!-- .site-main -->
+    </div><!-- .content-area -->
+    {% include('@DsbaarsTwentySixteen/Default/_sidebar.html.twig') %}
+    {% include('@DsbaarsTwentySixteen/Default/_footer.html.twig') %}
+{% endblock %}

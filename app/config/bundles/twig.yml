@@ -1,0 +1,8 @@
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        site_name: BetterPress
+        site_logo: BetterPress
+        site_description: Just another BetterPress site
