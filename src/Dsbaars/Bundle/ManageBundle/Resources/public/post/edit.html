@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="col-md-9">
+        <h1>Edit post</h1>
+        <form method="post">
+            <textarea ui-tinymce="vm.tinymceOptions" ng-model="vm.tinymceModel"></textarea>
+            <!--<button ng-click="getContent()" class="btn btn-primary">Get content</button>
+            <button ng-click="setContent()" class="btn btn-info">Set content</button>-->
+        </form>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab"><a role="button" data-toggle="collapse">Publish</a></div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <i class="fa fa-key"></i> Status: <strong>Draft</strong><br>
+                    <i class="fa fa-eye"></i> Visibility: <strong>Public</strong><br>
+                    <i class="fa fa-calendar"></i> Published: <strong>not yet</strong><br>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-sm">Update</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Featured image</div>
+            <div class="panel-body">
+                <p><i class="fa fa-file-image-o"></i> <a href="#">Set featured image</a></p>
+            </div>
+        </div>
+    </div>
+</div>

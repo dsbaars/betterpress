@@ -1,20 +1,25 @@
 </div><!-- .site-content -->
 
 <footer id="colophon" class="site-footer" role="contentinfo">
-    <?php if ( has_nav_menu( 'primary' ) ) : ?>
-    {% if has_nav_menu('primary') %}
-        <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
-            {#
-                            wp_nav_menu( array(
-                                'theme_location' => 'primary',
-            'menu_class'     => 'primary-menu',
-            ) #}
-            ?>
-        </nav><!-- .main-navigation -->
+
+    {% if has_nav_menu('primary') or true %}
+
+    <nav class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Primary Menu', 'twentysixteen' ); ?>">
+        {{ knp_menu_render('main', {
+            'leaf_class': 'menu-item'
+
+        }, 'twenty_sixteen') }}
+    </nav><!-- .main-navigation -->
     {% endif %}
 
-    {% if has_nav_menu('social') %}
+    {% if has_nav_menu('social') or true %}
         <nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentysixteen' ); ?>">
+            {{ knp_menu_render('social', {
+                'leaf_class': 'menu-item',
+                'labelAttributes': {
+                    'class': 'screen-reader-text'
+                }
+            }, 'twenty_sixteen_social') }}
             {#
                             wp_nav_menu( array(
                                 'theme_location' => 'social',

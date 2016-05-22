@@ -1,8 +1,40 @@
 <aside id="secondary" class="sidebar widget-area" role="complementary">
-{% include('@DsbaarsBetterpress/Sidebar/search.html.twig') %}
-{% include('@DsbaarsBetterpress/Sidebar/recent_posts.html.twig') %}
-{% include('@DsbaarsBetterpress/Sidebar/recent_comments.html.twig') %}
-{% include('DsbaarsBetterpressBundle:Sidebar:archives.html.twig') %}
-{% include('@DsbaarsBetterpress/Sidebar/categories.html.twig') %}
-{% include('@DsbaarsBetterpress/Sidebar/meta.html.twig') %}
+    {% include('@DsbaarsBetterpress/Sidebar/search.html.twig') %}
+
+    {{
+        render(
+            controller(
+                'DsbaarsBetterpressBundle:Sidebar:recentPosts',
+                 { 'max': 3 }
+            )
+        )
+    }}
+
+    {{
+        render(
+            controller(
+                'DsbaarsBetterpressBundle:Sidebar:recentComments',
+                 { 'max': 3 }
+            )
+        )
+    }}
+
+    {{
+        render(
+            controller(
+                'DsbaarsBetterpressBundle:Sidebar:archives',
+                 { 'max': 3 }
+            )
+        )
+    }}
+
+    {% include('@DsbaarsBetterpress/Sidebar/categories.html.twig') %}
+
+    {{
+        render(
+            controller(
+                'DsbaarsBetterpressBundle:Sidebar:meta'
+            )
+        )
+    }}
 </aside>

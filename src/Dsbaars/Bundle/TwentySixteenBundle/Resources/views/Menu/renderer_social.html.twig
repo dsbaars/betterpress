@@ -1,0 +1,6 @@
+{% extends 'DsbaarsTwentySixteenBundle:Menu:renderer.html.twig' %}
+
+
+
+
+{% block label %}<span class="screen-reader-text">{% if options.allow_safe_labels and item.getExtra('safe_label', false) %}{{ item.label|raw }}{% else %}{{ item.label }}{% endif %}</span>{% endblock %}

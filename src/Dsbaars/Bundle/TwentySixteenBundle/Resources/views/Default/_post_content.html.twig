@@ -1,0 +1,27 @@
+<article id="post-{{ post.id }}">
+    <header class="entry-header">
+        <h1 class="entry-title">{{ post.title }}</h1>
+        {#% if post.excerpt|length %}
+            {{ post.excerpt }}
+        {% endif %#}
+
+        <div class="entry-content">
+            {{ post.content }}
+        </div>
+
+        <footer class="entry-footer">
+            <span class="byline"><span class="author vcard"><span
+                        class="screen-reader-text">Author </span> <a class="url fn n"
+                                                                     href="http://10.211.55.112:8000/author/admin/">admin</a></span></span><span
+                class="posted-on"><span class="screen-reader-text">Posted on </span><a
+                    href="" rel="bookmark"><time
+                        class="entry-date published updated"
+                        datetime="2016-05-22T19:01:20+00:00">{{ post.created|date }}</time></a></span><span
+                class="comments-link"><a
+                    href="http://10.211.55.112:8000/2016/05/22/hello-world/#comments">1 Comment<span
+                        class="screen-reader-text"> on Hello world!</span></a></span> <span class="edit-link"><a
+                    class="post-edit-link" href="http://10.211.55.112:8000/wp-admin/post.php?post=1&#038;action=edit">Edit<span
+                        class="screen-reader-text"> "Hello world!"</span></a></span>
+        </footer>
+    </header><!-- .entry-header -->
+</article>

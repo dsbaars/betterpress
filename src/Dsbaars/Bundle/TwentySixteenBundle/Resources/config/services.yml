@@ -1,4 +1,27 @@
 services:
-#    dsbaars_twenty_sixteen.example:
-#        class: Dsbaars\Bundle\TwentySixteenBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    dsbaars_twenty_sixteen.menu_renderer:
+        class: Dsbaars\Bundle\TwentySixteenBundle\Menu\Renderer\TwentySixteenRenderer
+        arguments:
+            - @twig
+            - "%knp_menu.renderer.twig.template%"
+            - @knp_menu.matcher
+            - %knp_menu.renderer.twig.options%
+        tags:
+            - { name: knp_menu.renderer, alias: twenty_sixteen }
+    dsbaars_twenty_sixteen.social_menu_renderer:
+        class: Dsbaars\Bundle\TwentySixteenBundle\Menu\Renderer\TwentySixteenSocialRenderer
+        arguments:
+            - @twig
+            - "DsbaarsTwentySixteenBundle:Menu:renderer_social.html.twig"
+            - @knp_menu.matcher
+            - %knp_menu.renderer.twig.options%
+        tags:
+            - { name: knp_menu.renderer, alias: twenty_sixteen_social }
+    knp_menu.twig.extension:
+        class: "%knp_menu.twig.extension.class%"
+        arguments:
+            - @knp_menu.helper
+            - @knp_menu.matcher
+            - @knp_menu.manipulator
+        tags:
+            - { name: twig.extension }

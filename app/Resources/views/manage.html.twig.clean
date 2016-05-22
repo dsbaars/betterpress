@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="managepress">
+    <head>
+        <base href="/manage/">
+        <meta charset="UTF-8" />
+        <title>{% block title %}ManagePress{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
+        <!-- injector:css -->
+        <link rel="stylesheet" href="/css/app.css">
+        <!-- endinjector -->
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/" class="navbar-brand">ManagePress <span class="fa fa-user-plus"></span></a>
+                </div>
+                <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+                            <a ng-href="[[item.link]]" ng-bind-html="item.title"></a>
+                        </li>
+                        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div ui-view="">
+        {% block body %}{% endblock %}
+        </div>
+        <!-- injector:js -->
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-resource/angular-resource.js"></script>
+        <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/ng/app.js"></script>
+        <script src="/ng/controllers/CommentCtrl.js"></script>
+        <script src="/ng/controllers/MainCtrl.js"></script>
+        <script src="/ng/controllers/MediaCtrl.js"></script>
+        <script src="/ng/controllers/NavbarCtrl.js"></script>
+        <script src="/ng/controllers/PostCtrl.js"></script>
+        <script src="/ng/controllers/SettingCtrl.js"></script>
+        <script src="/ng/controllers/UserCtrl.js"></script>
+        <script src="/ng/routers/main.js"></script>
+        <!-- endinjector -->
+        {% block javascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,3 +1,8 @@
 <section id="meta-2" class="widget widget_meta">
     <h2 class="widget-title">Meta</h2>
+    <ul>
+        {% for l in links %}
+        <li><a href="#">{{ l }}</a></li>
+        {% endfor %}
+    </ul>
 </section>

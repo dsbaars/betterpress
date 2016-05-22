@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: bundles/doctrine.yml }
     - { resource: bundles/fos_rest.yml }
+    - { resource: bundles/fos_user.yml }
     - { resource: bundles/jms_serializer.yml }
     - { resource: bundles/nelmio_api_doc.yml }
     - { resource: bundles/nelmio_cors.yml }
@@ -10,6 +11,7 @@ imports:
     - { resource: bundles/swiftmailer.yml }
     - { resource: bundles/twig.yml }
     - { resource: bundles/jwt_auth.yml }
+    - { resource: bundles/khepin_yaml_fixtures.yml }
 
 framework:
     #esi:             ~

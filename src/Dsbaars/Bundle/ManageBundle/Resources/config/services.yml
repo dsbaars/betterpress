@@ -1,0 +1,4 @@
+services:
+#    dsbaars_manage.example:
+#        class: Dsbaars\Bundle\ManageBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -26,17 +26,23 @@ class AppKernel extends Kernel
             new \Auth0\JWTAuthBundle\JWTAuthBundle(),
             // REST stuff ends here
 
+            new FOS\UserBundle\FOSUserBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Dsbaars\Bundle\NodejsToolBundle\DsbaarsNodejsToolBundle(),
             new Dsbaars\Bundle\TwentySixteenBundle\DsbaarsTwentySixteenBundle(),
             new Dsbaars\Bundle\BetterpressBundle\DsbaarsBetterpressBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Dsbaars\Bundle\ManageBundle\DsbaarsManageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new Khepin\YamlFixturesBundle\KhepinYamlFixturesBundle();
         }
 
         return $bundles;

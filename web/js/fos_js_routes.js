@@ -1,1 +1,1 @@
-fos.Router.setData({"base_url":"","routes":{"dsbaars_demo_default_index":{"tokens":[["text","\/"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});
+fos.Router.setData({"base_url":"","routes":[],"prefix":"","host":"localhost","scheme":"http"});

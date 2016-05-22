@@ -1,3 +1,14 @@
+dsbaars_manage:
+    resource: "@DsbaarsManageBundle/Controller/"
+    type:     annotation
+    prefix:   /manage
+
+dsbaars_manage_api:
+    resource: "@DsbaarsManageBundle/ApiController/"
+    type:     annotation
+    prefix:   /api/manage
+
+
 dsbaars_betterpress:
     resource: "@DsbaarsBetterpressBundle/Controller/"
     type:     annotation
@@ -18,10 +29,17 @@ home:
         _controller: DsbaarsTwentySixteenBundle:Default:index
         path: /
 
+root_sub:
+    path: /manage/{rest}/{rest2}
+    defaults:
+        _controller: DsbaarsManageBundle:Default:index
+        path: /manage
+
+
 # Redirect everything else to index, so ui-router can take over
 root:
-    path: /{rest}
+    path: /manage/{rest}
     defaults:
-        _controller: DsbaarsTwentySixteenBundle:Default:index
-        path: /
+        _controller: DsbaarsManageBundle:Default:index
+        path: /manage
 

@@ -1,3 +1,10 @@
 <section id="archives-2" class="widget widget_archive">
     <h2 class="widget-title">Archives</h2>
+    <ul>
+        {% for post in posts %}
+            <li><a href="">{{ post.created|date('M Y') }}</a></li>
+        {% else %}
+            <li>No posts found</li>
+        {% endfor %}
+    </ul>
 </section>

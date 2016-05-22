@@ -6,6 +6,6 @@
             return
 
     angular
-        .module("dsbaars")
+        .module("managepress")
         .controller('MainCtrl', MainCtrl)
 )()

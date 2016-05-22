@@ -4,9 +4,17 @@ namespace Dsbaars\Bundle\BetterpressBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use JMS\DiExtraBundle\Annotation as DI;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class SidebarController extends Controller
 {
+    /**
+     * @DI\Inject("doctrine.orm.entity_manager")
+     * @var
+     */
+    protected $em;
+
     /**
      * @Route("/search")
      */
@@ -19,52 +27,66 @@ class SidebarController extends Controller
 
     /**
      * @Route("/recentPosts")
+     * @Template("DsbaarsBetterpressBundle:Sidebar:recent_posts.html.twig")
      */
-    public function recentPostsAction()
+    public function recentPostsAction($max = 3)
     {
-        return $this->render('DsbaarsBetterpressBundle:Sidebar:recent_posts.html.twig', array(
-            // ...
-        ));
+        $posts = $this->em->getRepository('DsbaarsBetterpressBundle:Post')->findAll();
+
+        return array(
+            'posts' => $posts
+        );
     }
 
     /**
      * @Route("/recentComments")
+     * @Template("DsbaarsBetterpressBundle:Sidebar:recent_comments.html.twig")
      */
     public function recentCommentsAction()
     {
-        return $this->render('DsbaarsBetterpressBundle:Sidebar:recent_comments.html.twig', array(
-            // ...
-        ));
+        return array(
+            'comments' => array()
+        );
     }
 
     /**
      * @Route("/archives")
+     * @Template("DsbaarsBetterpressBundle:Sidebar:archives.html.twig")
      */
     public function archivesAction()
     {
-        return $this->render('DsbaarsBetterpressBundle:Sidebar:archives.html.twig', array(
-            // ...
-        ));
+        $posts = $this->em->getRepository('DsbaarsBetterpressBundle:Post')->findAll();
+
+        return array(
+            'posts' => $posts
+        );
     }
 
     /**
      * @Route("/categories")
+     * @Template("DsbaarsBetterpressBundle:Sidebar:categories.html.twig")
      */
     public function categoriesAction()
     {
-        return $this->render('DsbaarsBetterpressBundle:Sidebar:categories.html.twig', array(
-            // ...
-        ));
+        return array(
+            'categories' => array()
+        );
     }
 
     /**
      * @Route("/meta")
+     * @Template("DsbaarsBetterpressBundle:Sidebar:meta.html.twig")
      */
     public function metaAction()
     {
-        return $this->render('DsbaarsBetterpressBundle:Sidebar:meta.html.twig', array(
-            // ...
-        ));
+        return array(
+            'links' => array(
+                'Site Admin',
+                'Entries RSS',
+                'Comments RSS',
+                'BetterPress on GitHub'
+            )
+        );
     }
 
 }

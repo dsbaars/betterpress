@@ -1,9 +1,12 @@
 services:
-#    dsbaars_betterpress.example:
-#        class: Dsbaars\Bundle\BetterpressBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
-    app.twig_extension:
+    dsbaars_betterpress.twig_extension:
         class: Dsbaars\Bundle\BetterpressBundle\Twig\Extension\BetterpressExtensions
         public: false
         tags:
             - { name: twig.extension }
+    dsbaars_betterpress.menu_builder:
+            class: Dsbaars\Bundle\BetterpressBundle\Menu\MenuBuilder
+            arguments: ["@knp_menu.factory"]
+            tags:
+                - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+                - { name: knp_menu.menu_builder, method: createSocialMenu, alias: social }

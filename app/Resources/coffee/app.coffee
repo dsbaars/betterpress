@@ -17,9 +17,10 @@
         return
 
     angular
-        .module("dsbaars", [
+        .module("managepress", [
             'ui.bootstrap'
             'ui.router'
+            'ui.tinymce'
         ])
         .config(config)
 )()
